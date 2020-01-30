@@ -1,0 +1,26 @@
+.wrapper {
+    padding-left: 18px;
+    padding-right: 18px;
+    max-width: 1236px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &--medium {
+        max-width: 976px;
+    }
+
+    &--b-margin {
+        margin-bottom: 1rem;
+    }
+
+    @mixin atSmall {
+        &--b-margin {
+            margin-bottom: 3.875rem;
+        }
+    }
+
+    .wrapper { /* Here we're saying "Any wrapper nested within another wrapper should no longer have any horizontal padding." */
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,17 @@
+/* Note: When seeing the word 'import' everywhere it feels as if you should be able to not use semicolons here but rememeber this is a .css file, not .js, so forgetting a semicolon would break your entire styles.css file */
+
+@import 'normalize.css'; /* normalize.css is a great npm package, it simply resets everything to make web browsers render things more consistently */
+@import 'base/_variables'; /* Make sure these variables are @imported before the subsequent modules that make use of them, otherwise your entire styles.css sheet will break */
+@import 'base/_mixins';
+@import 'base/_global';
+
+@import 'modules/_large-hero'; 
+@import 'modules/_button';
+@import 'modules/_wrapper';
+@import 'modules/_page-section';
+@import 'modules/_headline';
+@import 'modules/_row';
+@import 'modules/_generic-content-container';
+@import 'modules/_section-title';
+@import 'modules/_feature-item';
+@import 'modules/_testimonial';

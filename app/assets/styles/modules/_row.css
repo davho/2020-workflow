@@ -1,0 +1,61 @@
+.row {
+
+
+        &::after { /* Best way to make columns is to float: left two sibling divs next to each other who's combined widths are 100% and clear the float in ::after pseudo selector with content: "" 
+            https://www.w3schools.com/howto/howto_css_two_columns.asp
+            */
+            content: "";
+            display: table; /* This is for extra browser support */
+            clear: both; 
+        }
+    
+        &--gutters {
+            margin-right: -65px; /* Giving the parent div a negative right margin equal to the extra right margin of the last child div to offset it. */
+        }
+
+        &--gutters-large {
+            margin-right: -100px;
+        }
+    
+        &--gutters > div { /* We don't want to style the parent row div that has the row--gutters modifier, we want to style its children, so we use the > symbol to select all direct children that have a tag of div */
+            padding-right: 65px;
+        }
+
+        &--gutters-large > div {
+            padding-right: 100px;
+        }
+
+        &__b-margin-until-medium {
+            margin-bottom: 1rem;
+        }
+        
+        @mixin atMedium {
+
+        &__b-margin-until-medium {
+            margin-bottom: 0;
+        }
+
+        &__medium-4 {
+            float: left;
+            width: 33.33%;
+        }
+
+        &__medium-4--larger {
+            width: 37%;
+        }
+    
+        &__medium-8 {
+            float: left;
+            width: 66.66%
+        }
+
+        &__medium-8--smaller {
+            width: 63%;
+        }
+
+        &__medium-6 {
+            float: left;
+            width: 50%;
+        }
+    }
+}

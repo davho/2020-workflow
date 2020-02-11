@@ -1,0 +1,164 @@
+Handy:
+
+
+
+
+
+Terminal commands
+
+clear (clears the command line, you can also hit Command+K on Mac)
+pwd (shows what directory you’re in)
+ls (displays the contents of the directory you’re in)
+cd [local folder address] (stands for “change directory,” then you type in the local folder address you want to navigate to)
+cd .. (goes up to parent directory from current directory)
+cd ../.. (goes up to grandparent directory from current directory)
+mkdir [new folder name] (stands for “make directory,” then you type in the name of the folder you’d like to create)
+touch [new file name] (“touch” plus the name of the new file you’d like to create creates the new file in the directory you’re currently in)
+cp [name of file, name of folder] (copies the file name you designate into the folder you designate)
+mv [name of file, name of folder] (moves the file name you designate into the folder you designate)
+rm [name of file] (permanently deletes the file name you type)
+rm -r [name of directory] (permanently deletes the directory name you designate)
+open [name of file] (launches file in it’s default application)
+
+
+
+
+
+npm and Node.js
+
+**********************************************************
+Building Apps with React Native and Expo
+**********************************************************
+1) Go to System Preferences\Security & Privacy\Firewall and turn off Firewall. 
+2) If it’s not already installed, npm install -g expo-cli (this takes place of create-react-native-app, which Expo merged with and replaced, which itself was in place of react-native-cli). Type expo -V or expo —-version to check and see if/which version of Expo is already installed 
+3) expo init (first navigate to where you want the project directory to be)
+4) Just like “npm init” you’ll enter project name (as well as a slug), but will also choose between 2 different templates vs no template at all. Expo docs recommend using the “tabs” template. Expo then initializes a new project: It copies a basic template and installs all 3 of react, react-native and Expo. Now the project has successfully been created.
+5) Now cd into your project folder and type npm start. This starts the dev server. In a traditional web development environment we would’ve been finished with our setup at this point, but here’s where things were getting sticky. Using react-native-cli without Expo (old fashioned way of building a react-native app) was the only way to get an Expo project loaded onto the Expo app on the phone, which is counter intuitive. I think the glitch happened in the wake of Apple forcing Expo to deprecate their QRC connect phenomenon. In any case, it was impossible to find documents or videos that demonstrated the following steps below, but I found one video with only 76 views that made things work by demonstrating how to log into Expo from the command line in order to add the project to the account - https://www.youtube.com/watch?v=bef12Fa9bhM
+6) Log into your Expo account from the command line, which solves the problem of trying to get the project into your account by sending an email with the link, which was the duct-tape-and-strings process Expo had to finagle in the wake of Apple forcing them to deprecate their previous and acclaimed process of letting the Expo app add the project by recognizing a QR code on the laptop screen. If you don’t have an Expo account, go to https://expo.io, click create an account and make one. Once the account is made go back to the command line and in a new Terminal tab (that doesn’t have the dev server running) type in Expo login. Use the credentials of your Expo account to login and the project will be added to your Expo account. 
+7) now type expo start (or npm run start ?)
+8) a webpage will open on a localhost indicating that your app is now running.
+9) If you don’t already have it, download the Expo app for your phone. 
+10) Sign into your Expo account, click on the projects tab, and you will see your project available on the list. (Go to System Preferences\Security & Privacy\Firewall and turn off Firewall!!!) Tap on it to launch it and wait for it to build. Congrats, the project is now active with hot reloading!
+
+https://docs.expo.io/versions/latest/workflow/up-and-running/
+
+**********************************************************
+
+npm list -g --depth 0 OR npm ls -g --depth=0 (how to check to see which globally installed npm packages are on your computer… if you want to see this from Finder just open a Finder window and do ‘shift’ + ‘command’ + ‘.’)
+node -v (how to check to see if node is installed and if so what version you have)
+npm -v (how to check to see if npm is installed and if so what version you have)
+npm publish --access public (this is how you publish an npm package, as of Nov 2018 you have to add the new ‘--access public’ otherwise you’ll get the error ‘unscoped packages cannot be private.’ As if Dec 2018 I have reason to believe you have to add ‘--access public’ at least to the first iteration of the npm package.)
+
+node -v
+node [file name]
+
+npm install (by itself, npm install will install whatever dependencies are specified in the package.json file)
+npm install [package name as a framework or library like jQuery, Normalize, Bootstrap, etc.] —-save
+npm install [package name as a developer dependency like Webpack] —-save-dev
+npm uninstall [package name as a framework or library like jQuery, Normalize, Bootstrap, etc.] —-save
+npm uninstall [package name as a developer dependency like Webpack] —-save-dev
+
+npm install [package name which could be jQuery, Normalize, Bootstrap, etc.] -g (-g, or —-global, installs globally, which you usually don’t want to do, but if you need to you’d get a permissions error from Terminal unless you prefixed your command with sudo, for instance sudo npm install live-server -g, npm install nodemon -g, etc. and would then be prompted by Terminal to enter your Apple password for the device)
+npm init (begins making your package.json file by walking you through a series of prompts)
+sudo npm link (allows you to test a new npm module you might be creating; allows you to require the module you’re creating into another project using a symbolic link in your computer between the module and a dummy project you’d create to test the module before uploading to npm)
+sudo npm unlink (unlinks the symbolic link)
+npm run dev [this will run the dev scripts in your package.json file, which most importantly should have “webpack --mode development”,
+
+
+
+
+
+git
+
+https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
+
+**********************************************************
+Initializing a New Git
+**********************************************************
+
+1) If you’re starting by removing an accidental git, navigate to the project folder from terminal and type rm -rf .git
+2) Now type git init
+3) Typing git status will show you (in red) which files have been changed since the last commit (in this case, which files will be committed for the first time… so make sure your .gitignore file reflects what should be committed and pushed to the repo.)
+4) Type git remote add origin https://…., and then the URL of the git repo where you will be pushing the project directory. 
+5) Type git remote -v to verify that the push (and pull) directory is the url you just added as origin
+5) Type git add -A to add all the files to your commit queue
+6) Typing git status again will now show you (in green) which files will be committed
+7) Type git commit -m “” and inside those quotes type a message explaining the commit.
+8) Now type git push origin master
+
+**********************************************************
+
+git —-version (check which version of git you’re using)
+git config —-global user.name [“name”] (set the global user name)
+git config —-global user.email [“youremail@address.com”] (set the global email)
+
+git config user.name (check the global user name)
+git config user.email (check the global user email)
+
+git init
+rm -rf .git (this removes the git from your directory if you did a git init by accident, were signed into the wrong GitHub account, or if you accidentally forgot to include a proper .gitignore file.)
+git status
+git add [path and name of file]
+git reset [path and name of file you want to remove from staging] (usefully if you need to git add -A and then remove one of the files for some reason)
+git add -A
+git commit -m “[message goes here]”
+git commit -am “[message goes here]”
+git checkout —- . (git checkout dash dash space period will revert all your saved changed to the project to the most recent commit. This is especially useful if you find that you’ve saved a mistake somewhere along the line and can’t located it, but know it was sometime after your last commit. Side note you’ll have to type this out, can’t copy and paste because Apple TextEdit automatically turns the - into another type of dash when two of the are together, even when format is converted to plain text, Apple can’t stop sucking.)
+git branch (shows you all the branches in your repo)
+git branch [name of branch you want to create]
+git checkout [name of branch you want to switch to]
+git branch -d [name of branch you want to delete]
+git checkout -b [name of the branch you want to create and switch to]
+git checkout -b gh-pages (this is my most common use case for git checkout -b [name of branch])
+https://gist.github.com/cobyism/4730490 [or… https://dev.to/letsbsocial1/deploying-to-gh-pages-with-git-subtree   but something was off about this one]
+git checkout —- .
+git merge [name of the branch you want to merge into the current branch]
+git merge [name of the branch you want to merge into the current branch] —no-ff (Then you have to hit esc key to allow the commit message to also be the merge message, then type “:wq” and hit enter. That’s a bit of editing a text message using vim. Then you do git push origin master. You’ll see that there’s one dedicated commit on master branch for the merge, not the last commit from the sub branch. If you don’t include -no-ff git will automatically fast forward the master branch history to the last commit on the sub branch. There’s no right or wrong way to do this, just preference.)
+
+git clone [https://github.com/someaccount/somefile.git]
+
+git remote -v
+git remote set-url origin
+git remote add origin
+git push -f origin master
+git push origin master
+git push origin +[any branch] (this overrides merge conflicts… don’t use unless working solo)
+git push origin +master (this overrides merge conflicts… don’t use unless working solo)
+git pull origin master
+
+
+
+
+
+gulp (not really using any more, newer versions of webpack can handle this)
+
+npm install gulp-cli --global
+npm install gulp --save-dev
+npm install gulp-watch —-save-dev
+gulp *typing gulp by itself will run the default task*
+gulp [name of task]
+gulp watch
+control+c (this stops gulp from watching)
+
+gulp.src(‘a path and file like ./main.css’)
+gulp.dest(‘a path and file like ./temp/styles’)
+gulp.pipe()
+
+npm install gulp-postcss --save-dev
+npm install autoprefixer --save-dev
+npm install postcss-nested --save-dev
+
+
+
+
+
+npm config set ignore-script true 
+
+WARNING… READ CAREFULY about the following command: npm config set ignore-script true 
+
+In this Nov 2019 ReactiveConf ( https://www.youtube.com/watch?v=24tQRwIRP_w ) speaker Richard Feldman explains the importance of running this command in your terminal, otherwise every time you npm install all the dependencies in a package.json, there’s this thing called a “post install hook” which could run node.js code for any of those packages that might infect your computer. There hasn’t been an outbreak yet, but it’s just a coincidence that there hasn’t been. See 15:20 of this video. In 2016 npm advised to run that command in terminal to prevent pre and post install scripts from running. Doing   config set ignore-script false  won’t switch it back to false either, there’s some issue there. I can’t find much more info on this, but people who have run  npm config set ignore-script true  have messed up apps pretty badly since you can’t use webpack, create react app, expo, etc when scripts are ignored.
+
+
+
+
+

@@ -1,0 +1,121 @@
+Edureka Git
+https://www.youtube.com/watch?v=KMOmw19ZCGs
+
+
+
+Creating repos: 
+
+git init    (initializes a new Git repo in the folder within which the git init command was run)
+git clone <repo_link>    (creates a copy of the original repo on your local machine)
+git fork <repo_link>    (creates a copy of the original repo on your account, e.g. GitHub account)
+
+
+
+Syncing repos: 
+
+git remote add origin <repo_link>    (sets the url to the remote repo to/from which the local repo should push/pull)
+git remote -v    (prints out the remote repo location)
+git remote    (prints the alias of the url to the remote repo, which by convention is almost always called "origin")
+git remote rename <old alias of the url to the remote repo, almost always called "origin"> <new alias name>    (renames the alias to whatever you specify)
+git remote remove origin    (removes the url to the remote repo and deletes all remote-tracking branches and configuration settings associated with that remote repo)
+git remote rm origin    (identical to git remote remove origin)
+git pull origin master    (copies all the files from the master branch in the remote repo to your local repo, where "origin" is the alias of the url to the remote repo and "master" is the branch)
+git pull origin <branch name>    (copies all the files from the specified branch in the remote repo to your local repo, where "origin" is the alias of the url to the remote repo)
+git push origin master    (pushes your local changes into the central repo, where "origin" is the alias of the url to the remote repo and "master" is the branch)
+git push origin <branch name>    (pushes your local changes into the central repo, where "origin" is the alias of the url to the remote repo)
+git push origin --delete <branch name>    (deletes the specified branch from the specified remote repo without deleting from your local repo)
+git push origin -d <branch name>    (identical to git push origin --delete <branch name>)
+git push origin :<branch name>    (identical to git push origin --delete <branch name>)
+git fetch origin <branch name>    (pulls in all the commits from your repo without making any changes to your local files so if you want to change your local files you have to perform a git merge or rebase after a fetch)
+git <branch name> --delete    (deletes the specified branch from your local repo, only if it's been merged already, without deleting it from the remote repo)
+git <branch name> -d    (identical to git <branch name> --delete)
+git branch -d <name of branch>    (identical to git <branch name> --delete)
+git branch -D <name of branch>    (deletes the specified branch from your local repo, regardless of whether it's been merged already, without deleting it from the remote repo)
+git branch -m <name of branch> <name to change branch to>    (renames the specified branch to the specified name)
+git push origin :<name of remote branch> <name to change remote branch to>    (renames the specified remote branch to the specified new name)
+git push --force origin <branch name>    (overwrites any changes to the remote repo since your last pull from it, which is not recommended, you should do git revert or manually merge the conflicts)
+git push -f origin <branch name>    (identical to git push --force origin <branch name>)
+
+* To delete a branch entirely first delete from the remote repo then from the local repo
+* HEAD is Git's additional pointer which always points to the last commit of the branch you're on
+
+
+
+Configuring repos:
+
+rm -rf .git (removes the git from your directory if you did a git init by accident, had incorrect local or global name/email set, or if you accidentally forgot to include a proper .gitignore file  *IS NOT A GIT COMMAND)
+git —-version (checks which version of git you’re using)
+git config user.name    (checks the current project scoped name used to credit changes)
+git config user.name <name or handle, however you want to be credited for changes>    (sets the current project scoped name to be used in crediting changes)
+git config --global user.name    (checks the current global name used to credit changes)
+git config --global user.name <name or handle, however you want to be credited for changes>    (sets the global name to be used in crediting changes)
+git config user.email    (checks the current project scoped email used to credit changes)
+git config user.email <email you want associated with your changes>    (sets the current project scoped email to be used in crediting changes)
+git config --global user.email    (checks the current global email used to credit changes)
+git config --global user.email <email you want associated with your changes>    (sets the global email to be used in crediting changes)
+
+
+
+Tracking changes:
+
+git status    (checks the status of the repo, namely which branch you're on, if any changes have been made, and whether or not those changes have been staged to be committed)
+git add <file name, or -A or . for all files>    (adds specified changes to the staging area)
+git reset <file name>    (removes the specified file from being staged, usefully you need to stage all but one file and just do git add -A and then git reset <file name> to remove only the one file)
+git checkout -- .    (reverts all changes saved changed to the project to the most recent commit)
+git revert HEAD    (reverts all changes saved changed to the project to the most recent commit)
+git commit -m "<commit message here>"    (commits, or records, the staged changes to the local repo)
+git commit -am "<commit message here>"    (stages and commits all tracked files in a single command to the local repo)
+git commit    (opens vim editor inside your terminal from where you need to hit "i" to insert the commit message, which is the same as the -m flag, then "enter" if you want to type a description to complement the message and "enter" for each description you want to add if for some reason you want more than one, and after which you need to hit "esc" and finally type ":wq" which stands for "write quit" to get out of vim and have the commit message and any descriptions applied the commit)
+git commit --amend -m "<new commit message>    (modifies the most recent commit and message by combining any new staged changes with the previous commit instead of creating an entirely new commit and if there have been no new staged changes since the most recent commit it still let's you amend that commit's message)
+git log    (presents an output of all the commits you've made inside that particular branch, specifying commit message, author, email, date, commit hash, and branch, out of which you can hit 'q' to quit)
+git log <branch name>    (you can run this command from any branch and specify the log for a different branch)
+git log --oneline (presents an output of all the commits you've made inside that particular branch, specifying only commit message and first 7 characters of the commit hash)
+git log --oneline <branch name>    (you can run this command from any branch and specify the log for a different branch)
+git log --graph    (you can add the graph flag to any git log command to see the branching and merging history)
+git log --author="<author name>"    (you can add the author flag to show commits by the specified author)
+git log --before="<date>"    (you can add the before flag to show commits before the specified date)
+git diff-tree -r <commit hash>    (shows a list of files that changed in a particular commit)
+git diff-tree --no-commit-id --name-only -r <commit hash>    (shows a list of files that changed in a particular commit without reiterating commit hash)
+git show <commit hash, or even just the first 7 to 8 characters of that hash>    (shows line by line, file by file, what changes have been made associated with the hash provided, out of which you can hit 'q' to quit)
+git ls-files    (lists all the files Git is tracking)
+git diff <file name>    (compares specified file to the "indexed version" or last staged version)
+git diff --cached <file name>    (compares specified file to the remote version)
+diff <file name 1> <file name 2>    (compares two specified files  *IS NOT A GIT COMMAND)
+git diff <commit hash 1> <commit hash 2>    (compares two commits in the history of local repo)
+git diff <commit hash> <file name>    (compares the specified file to the commit of the specified commit hash)
+git diff <local branch> <remote branch>    (compares specified local branch to specified remote branch, first do git branch -a to see all local and remote branches and choose from the list while removing the 'remotes/' prefix from the remote options)
+
+
+
+Parallel development: 
+
+git branch <name of the branch we want to create>    (creates a new branch from the source branch you're currently on, and it will contain all the commits available from the source branch - create new branches for any changes that need to be made so you don't directly affect the master branch, which should be set to be used for the production specific code, or all application code that's been approved for production)
+git branch    (tells you all the branches in your local repo and which branch you're connect to, git status will also tell you which branch you're connected to)
+git branch -a (tells you all the branches in both your local and your remote repos)
+git checkout <name of the branch we want to be on>    (changes branches)
+git checkout -b <branch name>    (create a branch and switch to it in a single command)
+git checkout -b <branch name> <commit hash>    (create a branch from <commit hash> and switch to it in a single command)
+git checkout -b <branch name> HEAD~<number>    (create a branch from <number> of commits ago and switch to it in a single command)
+git checkout <commit hash>    (switches to a particular commit hash)
+git merge <name of child branch>    (while checked out of a parent branch, merges the specified child branch into that parent without affecting the child and creates unified history in the parent)
+git merge --no-ff <name of child branch>    (while checked out of a parent branch, merges the specified child branch into that parent without affecting the child and preserves branch topology and history)
+git rebase <name of source branch>    (merges any new changes to the source branch into the checked out branch and makes the history appear as if all those changes had happened sequentially, combining a sequence of commits to a new base commit under a completely new commit hash, effectively rewriting history while providing easy visualization of feature branching workflow  *NEVER REBASE PUBLIC HISTORY, I.E. NEVER REBASE COMMITS ONCE THEY'VE BEEN PUSHED TO THE PUBLIC REPO, THE REBASE WOULD REPLACE THE OLD COMMITS WITH THE NEW ONES AND IT WOULD LOOK LIKE PART OF YOUR PROJECT HISTORY ABRUPTLY VANISHED)
+git rebase -i <name of source branch>    (identical to git rebase but allows you to rewrite local commit history)
+
+
+
+Other:
+
+git archive <branch name> --format=zip    (creates a zip file of the specified branch)
+git bundle create <../repo.bundler branch>    (create, unpack, and manipulate "bundle" files, bundles are used for the "offline" transfer of Git objects without an active "server" sitting on the other side of the network connection)
+git stash (saves all uncommitted changes to a temporary location when they're not yet in a state to commit to your repo)
+git stash list    (pulls up a list of your repo's stashes)
+git stash show    (inspects the details of your stash history)
+git stash apply (brings your stashes back to the presaging area so you can continue working and eventually stage and commit them if necessary)
+git stash drop    (drops the last stashed stash from the stash list)
+git stash drop <stash id>    (drops the stash from the stash id)
+
+
+
+Pull Requests:
+https://www.youtube.com/watch?v=KMOmw19ZCGs&t=5350s

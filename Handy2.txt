@@ -3,7 +3,7 @@ https://www.youtube.com/watch?v=KMOmw19ZCGs
 
 
 
-Creating repos: 
+Creating repos:
 
 git init    (initializes a new Git repo in the folder within which the git init command was run)
 git clone <repo_link>    (creates a copy of the original repo on your local machine)
@@ -11,7 +11,7 @@ git fork <repo_link>    (creates a copy of the original repo on your account, e.
 
 
 
-Syncing repos: 
+Syncing repos:
 
 git remote add origin <repo_link>    (sets the url to the remote repo to/from which the local repo should push/pull)
 git remote -v    (prints out the remote repo location)
@@ -87,7 +87,7 @@ git diff <local branch> <remote branch>    (compares specified local branch to s
 
 
 
-Parallel development: 
+Parallel development:
 
 git branch <name of the branch we want to create>    (creates a new branch from the source branch you're currently on, and it will contain all the commits available from the source branch - create new branches for any changes that need to be made so you don't directly affect the master branch, which should be set to be used for the production specific code, or all application code that's been approved for production)
 git branch    (tells you all the branches in your local repo and which branch you're connect to, git status will also tell you which branch you're connected to)
@@ -119,3 +119,8 @@ git stash drop <stash id>    (drops the stash from the stash id)
 
 Pull Requests:
 https://www.youtube.com/watch?v=KMOmw19ZCGs&t=5350s
+
+
+
+Authentication and switching between GitHub accounts:
+https://ginnyfahs.medium.com/github-error-authentication-failed-from-command-line-3a545bfd0ca8

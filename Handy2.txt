@@ -118,7 +118,27 @@ git stash drop <stash id>    (drops the stash from the stash id)
 
 
 Pull Requests:
+
 https://www.youtube.com/watch?v=KMOmw19ZCGs&t=5350s
+
+
+
+Delete Bloat from Commit History:
+
+git log --pretty=format: --name-only | sort -u    (shows all files/paths ever tracked in commit history)
+git filter-branch -f --tree-filter 'git rm -r -f --ignore-unmatch <path-to-folder-01-escaping-spaces-and-special-chars> && git rm -r -f --ignore-unmatch <path-to-folder-02-escaping-spaces-and-special-chars> && git rm -r -f --ignore-unmatch <path-to-folder-03-escaping-spaces-and-special-chars>' -- --all    (removes folders in relative-path format from all branches in commit history)
+git filter-branch -f --tree-filter 'git rm -f --ignore-unmatch <path-to-file-01-escaping-spaces-and-special-chars> && git rm -f --ignore-unmatch <path-to-file-02-escaping-spaces-and-special-chars> && git rm -f --ignore-unmatch <path-to-file-03-escaping-spaces-and-special-chars>' -- --all    (removes files in relative-path format from all branches in commit history)
+git reflog expire --expire=now --all && git gc --prune=now --aggressive    (runs garbage collection after running one or both of the above commands)
+git reset --hard dev    (makes master branch identical to dev branch while checked out of master branch)
+
+
+
+NPM:
+
+npm list --depth=99    (shows dependency tree of current project, note that at no point in tree is depth likely to exceed 99)
+npm list -g --depth 0    OR    npm ls -g --depth=0    (shows which globally installed npm packages are on your machine)
+
+
 
 
 
